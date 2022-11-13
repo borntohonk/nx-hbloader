@@ -1,8 +1,8 @@
 {
-    "name": "hbloader",
-    "title_id": "0x010000000000100D",
-    "title_id_range_min": "0x010000000000100D",
-    "title_id_range_max": "0x010000000000100D",
+    "name": "Forwarder",
+    "title_id": "0x010e3d7237302000",
+    "title_id_range_min": "0x010e3d7237302000",
+    "title_id_range_max": "0x010e3d7237302000",
     "main_thread_stack_size": "0x100000",
     "main_thread_priority": 44,
     "default_cpu_id": 0,
@@ -232,7 +232,7 @@
         },
         {
             "type": "application_type",
-            "value": 2
+            "value": 1
         },
         {
             "type": "min_kernel_version",
