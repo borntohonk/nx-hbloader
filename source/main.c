@@ -46,7 +46,7 @@ bool __nx_fsdev_support_cwd = false;
 // Used by trampoline.s
 Result g_lastRet = 0;
 
-void NORETURN nroEntrypointTrampoline(const ConfigEntry* entries, u64 handle, u64 entrypoint);
+void NX_NORETURN nroEntrypointTrampoline(const ConfigEntry* entries, u64 handle, u64 entrypoint);
 
 void __libnx_initheap(void)
 {
@@ -378,22 +378,8 @@ void loadNro(void)
 
     if (g_nextNroPath[0] == '\0')
     {
-       Result rc = romfsInit();
-        if (R_SUCCEEDED(rc))
-        {
-            if (!readAndCopy(g_nextNroPath, "romfs:/nextNroPath") || !readAndCopy(g_nextArgv, "romfs:/nextArgv"))
-            {
-                memcpy(g_nextNroPath, DEFAULT_NRO, sizeof(DEFAULT_NRO));
-                memcpy(g_nextArgv,    DEFAULT_NRO, sizeof(DEFAULT_NRO));
-            }
-
-            romfsExit();
-        }
-        else
-        {
-               memcpy(g_nextNroPath, DEFAULT_NRO, sizeof(DEFAULT_NRO));
-               memcpy(g_nextArgv,    DEFAULT_NRO, sizeof(DEFAULT_NRO));
-        }
+        memcpy(g_nextNroPath, DEFAULT_NRO, sizeof(DEFAULT_NRO));
+        memcpy(g_nextArgv,    DEFAULT_NRO, sizeof(DEFAULT_NRO));
     }
 
     memcpy(g_argv, g_nextArgv, sizeof g_argv);
